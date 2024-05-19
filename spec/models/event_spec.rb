@@ -6,4 +6,5 @@ RSpec.describe Event, type: :model do
   end
 
   it { expect(described_class.reflect_on_association(:creator).macro).to eq(:belongs_to) }
+  it { expect(described_class.reflect_on_association(:attendees).macro).to eq(:has_many) }
 end

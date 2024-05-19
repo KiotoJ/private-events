@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { expect(described_class.reflect_on_association(:attended_event).macro).to eq(:has_many) }
 end
