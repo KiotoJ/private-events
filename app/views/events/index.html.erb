@@ -1,4 +1,14 @@
 <div class="container">
-  <h1 class="text-center">Events</h1>
-  <p></p>
+  <h1 class="text-center" action="/events/new">All Events</h1>
+
+  <div class="actions">
+    <a href="/events/new">
+      New Events
+    </a>
+  </div>
+  <ul>
+    <% @events.each do |event| %>
+      <li> <%= event.event_place %> / <%= event.event_date %> </li>
+    <% end %>
+  </ul>
 </div>

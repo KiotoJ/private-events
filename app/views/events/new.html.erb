@@ -1,0 +1,13 @@
+<div class="container pt-3">
+  <h3 class="text-center">New events</h3>
+  <%= form_for @event, html: {class: 'form-group  form-wrapper'} do |f| %>
+    <%= f.label :event_date, class: 'label-control' %>:
+    <%= f.date_field :event_date, class: 'form-control' %>
+    <%= f.label :event_place, class: 'label-control' %>:
+    <%= f.text_field :event_place, class: 'form-control' %>
+    <%= f.label :creator, class: 'label-control' %>:
+    <%= f.select :user_id, @users.map{|u| [u.email, u.id]}, {}, {class: 'form-control'} %>
+    <%= link_to 'Back', events_path,  class: "btn btn-secondary" %>
+    <%= f.submit class: "btn btn-success"%>
+  <% end %>
+</div>
