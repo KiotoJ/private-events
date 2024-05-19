@@ -1,0 +1,3 @@
+#!/bin/bash
+docker-compose stop
+docker stop $(docker ps -a -q  --filter='name=web_event_build') > /dev/null
