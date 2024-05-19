@@ -8,7 +8,11 @@
   </div>
   <ul>
     <% @events.each do |event| %>
-      <li> <%= event.event_place %> / <%= event.event_date %> </li>
+      <li>
+        <%= link_to event do %>
+          <%= event.event_place %> / <%= event.event_date %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 </div>

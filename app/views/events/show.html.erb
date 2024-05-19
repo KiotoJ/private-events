@@ -1,0 +1,12 @@
+<div class="container">
+  <%= link_to 'Back', events_path %>
+  <p>
+    Place: <%= @event.event_place %>
+  </p>
+  <p>
+    Date: <%= @event.event_date %>
+  </p>
+  <p>
+    Creator: <%= @event.creator.email %>
+  </p>
+</div>

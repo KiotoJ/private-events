@@ -8,7 +8,7 @@ RSpec.describe "Events", type: :request do
     end
   end
 
-  describe "GET /new" do
+  describe "GET /events" do
     it "returns http success" do
       get "/events/new"
 
@@ -16,7 +16,20 @@ RSpec.describe "Events", type: :request do
     end
   end
 
-  describe "POST /create" do
+  describe "GET /events/:id" do
+    before do
+      @user = User.create(email: "toto@fr.mr", password: "30030303")
+      @event = Event.create(creator: @user)
+    end
+
+    it "returns http success" do
+      get "/events/#{@event.id}"
+
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "POST /events" do
     before do
       @user = User.create(email: "toto@fr.mr", password: "30030303")
     end
