@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'events/index'
   get '/users/show/:id', to: "users#show"
+  post "/events/create", to: "events#create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
