@@ -10,7 +10,7 @@
     Creator: <%= @event.creator.email %>
   </p>
   <%= form_for @event, :url => url_for(:controller => 'events', :action => 'create_attendee'), method: :patch do |f| %>
-    <%= f.submit %>
+    <%= f.submit "Attend this event" %>
   <% end %>
 
   <h3> All attendees </h5>

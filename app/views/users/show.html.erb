@@ -18,9 +18,14 @@
 
   <h3>All Attended events</h3>
   <ul>
-    <% @user.attended_events.find_each do |event| %>
-      <li><%= event.event_date %></li>
-    <% end %>
+      <h4> Past events </h4>
+      <% @user.attended_events.where('event_date <= ?', Date.today).find_each do |event| %>
+          <li><%= event.event_date %></li>
+      <% end %>
+      <h4> Future events </h4>
+      <% @user.attended_events.where('event_date > ?', Date.today).find_each do |event| %>
+          <li><%= event.event_date %></li>
+      <% end %>
   </ul>
 </div>
 
