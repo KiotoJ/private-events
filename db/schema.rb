@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_19_212908) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["attendee_id"], name: "index_event_attendees_on_attendee_id"
+    t.index ["event_id", "attendee_id"], name: "index_event_attendees_on_event_id_and_attendee_id", unique: true
     t.index ["event_id"], name: "index_event_attendees_on_event_id"
   end
 

@@ -9,9 +9,14 @@
   <p>
     Creator: <%= @event.creator.email %>
   </p>
-  <%= form_for "/events_attendees/#{@event.id}", method: :patch do |f| %>
+  <%= form_for @event, :url => url_for(:controller => 'events', :action => 'create_attendee'), method: :patch do |f| %>
     <%= f.submit %>
   <% end %>
 
   <h3> All attendees </h5>
+    <ul>
+    <% @event.attendees.find_each do |attendee| %>
+      <li><%= attendee.email %></li>
+    <% end %>
+    </ul>
 </div>
