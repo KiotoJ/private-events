@@ -36,7 +36,9 @@ RSpec.describe "Events", type: :request do
 
   describe "PATCH /events_attendees/:id" do
     before do
+      @user_1 = User.create(email: "zato@fr.mr", password: "30030303")
       @event = Event.create(creator: @user, attendees: [@user])
+      sign_in @user_1
     end
 
     it "returns http success" do
