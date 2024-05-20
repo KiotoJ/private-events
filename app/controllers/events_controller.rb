@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @event = Event.find(params[:id])
   end
 
@@ -18,6 +19,11 @@ class EventsController < ApplicationController
     event = user.events.build(event_params)
     event.save
     render json: event
+  end
+
+  def create_attendee
+    event = Event.find(params[:id])
+    event.attendees << User.find(current_user.id)
   end
 
   private

@@ -1,7 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe "Events", type: :request do
+  include Devise::Test::IntegrationHelpers
+
+  before do
+    @user = User.create(email: "toto@fr.mr", password: "30030303")
+    @event = Event.create(creator: @user, attendees: [@user])
+    sign_in @user
+  end
+
   describe "GET /" do
+
     it "returns http success" do
       get "/events"
       expect(response).to have_http_status(:success)
@@ -17,10 +26,6 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "GET /events/:id" do
-    before do
-      @user = User.create(email: "toto@fr.mr", password: "30030303")
-      @event = Event.create(creator: @user)
-    end
 
     it "returns http success" do
       get "/events/#{@event.id}"
@@ -29,11 +34,18 @@ RSpec.describe "Events", type: :request do
     end
   end
 
-  describe "POST /events" do
+  describe "PATCH /events_attendees/:id" do
     before do
-      @user = User.create(email: "toto@fr.mr", password: "30030303")
+      @event = Event.create(creator: @user, attendees: [@user])
     end
 
+    it "returns http success" do
+      patch "/events_attendees/#{@event.id}"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "POST /events" do
     it "creates new events" do
       post "/events", params: {event: {user_id: @user.id, event_place: 'Andy house', event_date: '2025/3/25'}}
 

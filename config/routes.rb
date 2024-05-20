@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   get '/users/show/:id', to: "users#show"
   get '/users/show/:id', to: "users#show"
 
+  patch '/events_attendees/:id', to: "events#create_attendee"
   # get 'events/index'
   # post "/events/create", to: "events#create"
   # get "/events/new", to: "events#new"
   resources :events
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -9,4 +9,9 @@
   <p>
     Creator: <%= @event.creator.email %>
   </p>
+  <%= form_for "/events_attendees/#{@event.id}", method: :patch do |f| %>
+    <%= f.submit %>
+  <% end %>
+
+  <h3> All attendees </h5>
 </div>
