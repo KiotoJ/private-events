@@ -10,7 +10,17 @@
     </a>
   </div>
   <ul>
-    <% @events.each do |event| %>
+    <h4> Past events </h4>
+      <% Event.past.each do |event| %>
+        <li>
+          <%= link_to event do %>
+            <%= event.event_place %> / <%= event.event_date %>
+          <% end %>
+        </li>
+      <% end %>
+    <h4> Future events </h4>
+
+    <% Event.future.each do |event| %>
       <li>
         <%= link_to event do %>
           <%= event.event_place %> / <%= event.event_date %>
