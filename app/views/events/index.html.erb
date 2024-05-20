@@ -1,4 +1,7 @@
 <div class="container">
+  <%= link_to current_user.email, "users/#{current_user.id}" %>
+</div>
+<div class="container">
   <h1 class="text-center" action="/events/new">All Events</h1>
 
   <div class="actions">

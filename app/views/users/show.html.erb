@@ -1,7 +1,24 @@
 <div class="container">
   <h1 class="text-center">Users</h1>
+  <%= link_to 'Back', events_path %>
+  <p>
+  <h3>Info</h3>
+  Email: <%= @user.email %>
+  </p>
+  <h3>All Created events</h3>
   <ul>
+  <% if @user.events.present? %>
     <% @user.events.find_each do |event| %>
+      <li><%= event.event_date %></li>
+    <% end %>
+  <% else %>
+      None
+  <% end %>
+  </ul>
+
+  <h3>All Attended events</h3>
+  <ul>
+    <% @user.attended_events.find_each do |event| %>
       <li><%= event.event_date %></li>
     <% end %>
   </ul>

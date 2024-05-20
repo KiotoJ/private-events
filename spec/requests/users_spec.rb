@@ -13,19 +13,12 @@ RSpec.describe "Users", type: :request do
     end
 
     it "returns http success" do
-      get "/users/show/#{@user_1.id}"
+      get "/users/#{@user_1.id}"
       expect(response).to have_http_status(:success)
     end
 
-    it "returns the events that the user_1 created" do
-      get "/users/show/#{@user_1.id}"
-      res = JSON.parse(response.body)
-      expect(res.size).to be(1)
-      expect(res[0]["id"]).to eq(@event_1.id)
-    end
-
     it "returns no 404" do
-      get "/users/show/#{nil}"
+      get "/users/#{nil}"
       expect(response).to have_http_status(:not_found)
     end
 

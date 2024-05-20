@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get '/users/show/:id', to: "users#show"
-  get '/users/show/:id', to: "users#show"
+  get '/users/:id', to: "users#show"
 
   patch '/events_attendees/:id', to: "events#create_attendee"
   # get 'events/index'
